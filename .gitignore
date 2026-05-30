@@ -1,0 +1,79 @@
+### Java ###
+*.class
+*.log
+*.ctxt
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Diretórios de build
+/target/
+/out/
+/build/
+
+### Maven ###
+/.mvn/timing.properties
+/.mvn/wrapper/maven-wrapper.jar
+/logs/
+!src/main/resources/logback.xml
+
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Cache do IntelliJ
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf/
+
+# Plugins do IntelliJ
+.idea/**/aws.xml
+.idea/**/sonarlint/
+
+### Spring Boot ###
+# Arquivos gerados
+spring.log
+
+### Sistema operacional ###
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+### Logs ###
+logs/
+*.out
+
+### Arquivos sensíveis ###
+.env
+*.key
+*.pem
+*.p12
+*.crt
+
+### Lombok ###
+lombok.config
+
+### Redis dump ###
+dump.rdb
+
+### Swagger ###
+/swagger-ui/
+
+### Arquivos temporários ###
+*.tmp
+*.temp
+*.swp
+*.swo

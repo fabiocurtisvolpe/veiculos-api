@@ -1,0 +1,164 @@
+{
+  "info": {
+    "name": "Veiculos API - Tinnova",
+    "_postman_id": "c1a1b2c3-d4e5-6789-abcd-ef0123456789",
+    "description": "Coleção para testar a API de Veículos com autenticação JWT (Admin e User)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Login Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@tinnova.com\",\n  \"senha\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var json = pm.response.json();",
+              "pm.environment.set(\"token_admin\", json.token);",
+              "console.log(\"Token ADMIN salvo\");"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth - Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"user@tinnova.com\",\n  \"senha\": \"user123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "auth", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var json = pm.response.json();",
+              "pm.environment.set(\"token_user\", json.token);",
+              "console.log(\"Token USER salvo\");"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Veículos - Listar (ADMIN)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/veiculos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "veiculos"]
+        }
+      }
+    },
+    {
+      "name": "Veículos - Listar (USER)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_user}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/veiculos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "veiculos"]
+        }
+      }
+    },
+    {
+      "name": "Veículos - Criar (ADMIN)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"marca\": \"Ford\",\n  \"modelo\": \"Fiesta\",\n  \"ano\": 2018,\n  \"cor\": \"Prata\",\n  \"placa\": \"ABC1234\",\n  \"precoEmReais\": 45000.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/veiculos",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "veiculos"]
+        }
+      }
+    },
+    {
+      "name": "Veículos - Atualizar (PUT) (ADMIN)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"marca\": \"Ford\",\n  \"modelo\": \"Fiesta Titanium\",\n  \"ano\": 2019,\n  \"cor\": \"Preto\",\n  \"placa\": \"ABC1234\",\n  \"precoEmReais\": 48000.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/veiculos/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "veiculos", "1"]
+        }
+      }
+    },
+    {
+      "name": "Veículos - Remover (DELETE) (ADMIN)",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/veiculos/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "veiculos", "1"]
+        }
+      }
+    }
+  ]
+}
