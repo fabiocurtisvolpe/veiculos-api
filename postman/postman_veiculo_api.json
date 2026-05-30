@@ -71,6 +71,22 @@
       ]
     },
     {
+      "name": "Veículos - Relatório",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token_admin}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/api/veiculos/relatorios/por-marca",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "veiculos"]
+        }
+      }
+    },
+    {
       "name": "Veículos - Listar (ADMIN)",
       "request": {
         "method": "GET",
