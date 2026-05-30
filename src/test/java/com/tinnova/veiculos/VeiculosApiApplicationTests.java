@@ -5,11 +5,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles("test")
-@SpringBootTest
-class VeiculosApiApplicationTests {
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+class VeiculosApiApplicationTest {
 
 	@Test
 	void contextLoads() {
+		// contexto sobe sem banco real
 	}
-
 }
